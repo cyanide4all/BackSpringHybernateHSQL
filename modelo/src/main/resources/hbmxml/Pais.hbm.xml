@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.qindel.webapp.modelo.entities.Pais" table="APLICACION_WEB.pais">
+        <id name="idPais" type="java.lang.Integer">
+            <column name="id_pais" />
+            <generator class="assigned" />
+        </id>
+        <property name="nombrePais" type="java.lang.String">
+            <column name="nombre_pais" />
+        </property>
+        <property name="codigoPais" type="java.lang.String">
+            <column name="codigo_pais" />
+        </property>
+        <property name="valorPais" type="int">
+            <column name="valor_pais" />
+        </property>
+    </class>
+</hibernate-mapping>

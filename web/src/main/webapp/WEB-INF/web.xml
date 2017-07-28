@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd"
+         version="2.4">
+
+    <display-name>aplicacion_web</display-name>
+    <description>Aplicación web de ejemplo</description>
+    
+    <!-- Configuración de Spring -->
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>
+			classpath:spring-context.xml
+			WEB-INF/main-servlet.xml
+		</param-value>
+	</context-param>
+ 
+	<listener>
+		<listener-class>
+			org.springframework.web.context.ContextLoaderListener
+		</listener-class>
+	</listener>
+
+	<!--                        -->
+	<!-- Servlets				-->
+	<!--                        -->
+
+	<!-- Controlador frontal -->
+	<servlet>
+		<servlet-name>main</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+
+	<!-- Mapping para vistas HTML -->
+	<servlet-mapping>
+		<servlet-name>main</servlet-name>
+		<url-pattern>*.html</url-pattern>
+	</servlet-mapping>
+
+	<!-- Mapping para peticiones REST -->
+	<servlet-mapping>
+		<servlet-name>main</servlet-name>
+		<url-pattern>/rest/*</url-pattern>
+	</servlet-mapping>
+
+	<!--                        -->
+	<!-- Otros  				-->
+	<!--                        -->
+
+	<session-config>
+		<session-timeout>60</session-timeout>
+	</session-config>
+
+	<!-- Pagina de inicio -->
+	<welcome-file-list>
+		<welcome-file>/WEB-INF/index.jsp</welcome-file>
+	</welcome-file-list>
+
+	<!-- Configuración del datasource -->    
+    <resource-ref id="ds">
+        <res-ref-name>jdbc/aplicacionWebDS</res-ref-name>
+        <res-type>javax.sql.DataSource</res-type>
+        <res-auth>Container</res-auth>
+        <res-sharing-scope>Shareable</res-sharing-scope>
+    </resource-ref>
+
+</web-app>
+

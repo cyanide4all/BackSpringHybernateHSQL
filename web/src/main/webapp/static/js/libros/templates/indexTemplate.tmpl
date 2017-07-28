@@ -1,0 +1,121 @@
+<div class="page-header">
+	<h1>Ejercicio web</h1>
+</div>
+<p>
+Esta aplicación web es el punto de partida para la realización de un ejercicio que busca que tú sepas a qué vas a
+enfrentarte en tu día a día y a nosotros saber cómo podría ser ese día a día.
+</p>
+<p>
+La aplicación consta de tres apartados:
+</p>
+<dl class="dl-horizontal">
+  <dt>Inicio</dt>
+  <dd>La página que estás leyendo ahora mismo. Explica los objetivos de este ejercicio.</dd>
+  <dt>Libros</dt>
+  <dd>Muestra un listado de libros (título y autor) obtenido de una base de datos.</dd>
+  <dt>Referencias</dt>
+  <dd>Se trata de una serie de recursos web que pueden ayudarte en la realización de este ejercicio.</dd>
+</dl>
+<p>
+La aplicación se ha desarrollado utilizando Hibernate, Spring, Jackson (JSON), Backbone.js y Bootstrap.js 
+principalmente y se espera que sean las tecnologías que utilices para desarrollar las tareas que te vamos a pedir.
+</p>
+<p>
+Uno de los objetivos buscados a la hora de realizar este ejercicio ha sido facilitarte la creación de un entorno de
+trabajo lo más compacto y autónomo posible. Para conseguirlo hemos decidido utilizar HyperSQL como gestor de base de
+datos y Jetty como servidor de aplicaciones.
+</p>
+<p>
+Por favor, lee atentamente todos los apartados restantes antes de comenzar con el ejercicio.
+</p>
+<h3>Tarea 1</h3>
+<p>
+De la misma forma que se puede ver el listado de libros, se pide añadir una opción a mayores al menú principal para
+mostrar una tabla con los siguientes campos:
+</p>
+<ul>
+  <li>id_pais</li>
+  <li>nombre_pais</li>
+  <li>id_ciudad</li>
+  <li>nombre_ciudad</li>
+  <li>valor</li>
+  <li>descripción_tipo_jjoo</li>
+  <li>número_veces_sede</li>
+</ul>
+<p>
+Esto es, un listado de todas las ciudades dadas de alta en el sistema indicando, para cada una de ellas, el número de
+veces que ha sido sede de unos juegos olímpicos; distinguiendo entre el número de veces que lo ha sido para juegos de
+invierno y de verano. Además, se mostrará también el dato "valor" que puede ser nulo para una ciudad concreta y en cuyo
+caso se mostraría el definido para el país.
+</p>
+<p>
+En el archivo <code>ejercicio_qindel/modelo/src/main/sql/aplicacionwebdb.sql</code> se incluye un pequeño script con el
+que recrear todas las tablas implicadas y pobladas con datos.
+</p>
+<h3>Tarea 2</h3>
+<p>
+El listado de los libros se muestra en una tabla en la que podemos ver cinco columnas distintas con el identificador
+del libro, su título, su descripción y un botón de edición y otro de borrado pero ninguno de los botones funciona.
+</p>
+<p>
+En esta tarea pedimos que al menos una de las funcionalidades eliminar o editar sea implementada.
+</p>
+<p>
+En el caso de la eliminación, la aplicación mostrará un diálogo modal pidiendo confirmación al usuario. Sólo si éste
+confirma, la aplicación eliminará de base de datos el libro indicado. Una vez que se ha borrado el libro (o si el
+usuario ha cancelado el borrado) la aplicación cerrará el diálogo modal y mostrara la lista de libros actualizada.
+</p>
+<p>
+En el caso de la edición, la aplicación también mostrará un diálogo modal pero, esta vez, mostrando un formulario en el
+que el usuario podrá modificar el título y el autor del libro. Este diálogo tendrá al menos dos botones, uno para
+aplicar los cambios en base de datos y otro para cancelar los cambios realizados. Al pulsar cualquiera de ellos, la
+aplicación devolverá al usuario al listado de libros mostrando los datos actualizados (si el usuario ha decidido
+aplicar los cambios en base de datos).
+</p>
+<p>
+Independientemente de la opción elegida, tendrás que añadir al dao de libros los métodos para actualizar un libro y
+borrarlo.
+</p>
+<h3>Tarea 3</h3>
+<p>
+Llegados a este punto ya tenemos todo el ejercicio implementado pero, ¿cómo sabemos que funciona?
+</p>
+<p>
+En esta tarea se pide crear un test en JUnit para el dao de libros. Este test comprobará que la lista de libros
+devuelta en la base de datos original incluye nueve libros y que los métodos de actualización y borrado de libros
+funcionan correctamente.
+</p>
+<h3>Tarea 4</h3>
+<p>
+Un proyecto, incluso uno pequeño como éste, no está terminado si no está documentado. Además, tambíen hay que decir que
+el desarrollo del ejercicio no siempre ha seguido un manual de buenas prácticas y hay partes del código que podrían
+mejorarse.
+</p>
+<p>
+Tu última tarea consiste en documentar brevemente los cambios que has hecho, qué puntos mejorarías y cuál es el motivo
+de esas mejoras.
+</p>
+
+<h3>Notas</h3>
+<h4>HyperSQL</h4>
+<p>
+Como ya te hemos comentado, la elección del gestor de base de datos ha venido dada para facilitar el desarrollo del
+ejercicio. Este gestor se llama HyperSQL y tiene sus peculiaridades. La que más nos importa es que la base de datos
+de trabajo se guarda en un directorio que va incluido con el código fuente. Este directorio es 
+<code>ejercicio_qindel/web/aplicacionwebdb/</code>.
+</p>
+<p>
+No hagas modificaciones en esos archivos, ya que podrás corromper la base de datos.
+</p>
+<p>
+En el archivo de configuración del entorno de Jetty tienes la url (ruta relativa) a la que debes conectarte si necesitas
+restaurar algún dato o simplemente echarle un vistazo a las tablas (esquema APLICACION_WEB).
+</p>
+<h4>Restricciones</h4>
+<p>
+El ejercicio que nos entregues debe compilar con maven3, utilizar Jetty como servidor de aplicaciones e HyperSQL como
+gestor de base de datos. Si utilizas otro entorno durante el desarrollo, por favor, asegúrate de que funciona en el
+entorno que te hemos preparado.
+</p>
+
+

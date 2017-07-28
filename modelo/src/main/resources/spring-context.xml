@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:p="http://www.springframework.org/schema/p" 
+    xmlns:tx="http://www.springframework.org/schema/tx" 
+    xmlns:context="http://www.springframework.org/schema/context"
+    xsi:schemaLocation="
+    	http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+    	http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+    	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!-- Enable usage of @Autowired. -->
+    <context:annotation-config />
+
+    <!-- Enable component scanning for defining beans with annotations. -->
+    <context:component-scan base-package="com.qindel.webapp.modelo"/>
+
+	<!-- HSQLDB Data Source -->        
+    <bean id="dataSource" 
+    	class="org.springframework.jndi.JndiObjectFactoryBean" 
+    	p:jndiName="java:comp/env/jdbc/aplicacionWebDS"
+        p:resourceRef="true" />
+
+	<!-- Configuramos hibernate -->
+	<bean id="hibernateSessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean"
+		p:dataSource-ref="dataSource" p:packagesToScan="com.qindel.webapp.modelo.entities">
+		<property name="mappingLocations">
+			<list>
+				<value>classpath:hbmxml/*.hbm.xml</value>
+			</list>
+		</property>
+	</bean>
+	
+	<!-- y el gestor de transacciones -->
+	<bean id="txManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+		<property name="sessionFactory" ref="hibernateSessionFactory"/>
+	</bean>
+	
+    <!-- Gestionamos las transacciones con anotaciones -->
+    <tx:annotation-driven transaction-manager="txManager" />
+
+	<!-- CONFIGURACION DE DAOS -->
+	<!-- Con Hibernate -->
+    <bean id="paisDao" class="com.qindel.webapp.modelo.entities.PaisDaoHibernate">
+    	<property name="sessionFactory" ref="hibernateSessionFactory" />
+    </bean>
+    <bean id="libroDao" class="com.qindel.webapp.modelo.entities.LibroDaoHibernate">
+    	<property name="sessionFactory" ref="hibernateSessionFactory" />
+    </bean>
+    <bean id="servicioImpl" class="com.qindel.webapp.modelo.servicio.impl.ServicioImpl">
+    	<property name="paisDao" ref="paisDao" />
+    	<property name="libroDao" ref="libroDao" />
+    </bean>
+</beans>

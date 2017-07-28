@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+		"-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+		"http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+<tiles-definitions>
+
+	<!-- Layout -->
+	<definition name="mainTemplate" template="/WEB-INF/jsp/layout/mainTemplate.jsp"></definition>
+
+	<!-- Pagina de inicio de la aplicación -->
+	<definition name="/index.html" extends="mainTemplate">
+		<!-- put-attribute name="contenido" value="/WEB-INF/jsp/index.jsp" / -->
+	</definition>
+
+
+</tiles-definitions>

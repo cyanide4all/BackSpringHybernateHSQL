@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+  <!-- Referencia: http://logback.qos.ch/manual/configuration.html -->
+  <!-- Appenders: http://logback.qos.ch/manual/appenders.html -->
+  <!-- pattern: %date [%thread] %-5level %logger - [%file:%line] - %message%n -->
+
+  <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+    <encoder>
+      <pattern>%date [%thread] %-5level %logger - %message%n</pattern>
+    </encoder>
+  </appender>
+
+  <appender name="file" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <File>${project.build.directory}/aplicacionweb-${HOSTNAME}.log</File>
+
+    <encoder>
+      <pattern>%date [%thread] %-5level %logger - %message%n</pattern>
+    </encoder>
+
+    <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+      <minIndex>1</minIndex>
+      <maxIndex>10</maxIndex>
+      <FileNamePattern>aplicacionweb-${HOSTNAME}.log.%i</FileNamePattern>
+    </rollingPolicy>
+
+    <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+      <MaxFileSize>10MB</MaxFileSize>
+    </triggeringPolicy>
+  </appender>
+
+  <!-- Levels  -->
+  <logger name="com.qindel" level="DEBUG"/>
+  <logger name="org.apache" level="INFO"/>
+  <logger name="org.springframework.transaction" level="INFO"/>
+  <logger name="org.springframework.security" level="INFO"/>
+  <logger name="org.springframework.orm" level="INFO"/>
+  <logger name="org.springframework" level="WARN"/>
+  <logger name="org.hibernate.DEBUG" level="INFO"/>
+  <logger name="org.hibernate.SQL" level="DEBUG"/>
+  <logger name="org.hibernate" level="INFO"/>
+  <logger name="org.eclipse.jetty" level = "INFO"/>
+
+
+  <!-- Root -->
+
+  <root level="DEBUG">
+    <appender-ref ref="console"/>
+    <appender-ref ref="file"/>
+  </root>
+
+</configuration>

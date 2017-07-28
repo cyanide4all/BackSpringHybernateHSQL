@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>com.qindel</groupId>
+    <artifactId>webapp</artifactId>
+    <version>0.9-SNAPSHOT</version>
+  </parent>
+  
+  <artifactId>web</artifactId>
+  <name>Vista web</name>
+  <packaging>war</packaging>
+
+  <build>
+    <resources>
+		<resource>
+			<directory>src/main/resources</directory>
+			<filtering>true</filtering>
+			<includes>
+				<include>logback.xml</include>
+			</includes>
+		</resource>
+		<resource>
+			<directory>src/main/resources</directory>
+		</resource>
+   	</resources>
+  	<plugins>
+  		<!-- PLUGIN Jetty -->
+  		<plugin>
+			<groupId>org.mortbay.jetty</groupId>
+            <artifactId>jetty-maven-plugin</artifactId>
+            <version>${jetty.plugin.version}</version>
+
+            <configuration>
+            	<webAppConfig>
+                	<contextPath>/${project.artifactId}</contextPath>
+                    <defaultsDescriptor>${basedir}/etc/webdefault.xml</defaultsDescriptor>
+                    <descriptor>${project.build.directory}/${project.build.finalName}/WEB-INF/web.xml</descriptor>
+                </webAppConfig>
+                <reload>manual</reload>
+            </configuration>
+            <dependencies>
+				<dependency>
+					<groupId>${jdbcDriver.groupId}</groupId>
+					<artifactId>${jdbcDriver.artifactId}</artifactId>
+					<version>${jdbcDriver.version}</version>
+					<scope>runtime</scope>
+				</dependency>
+				<dependency>
+					<groupId>commons-dbcp</groupId>
+					<artifactId>commons-dbcp</artifactId>
+					<version>${commons.dbcp.version}</version>
+				</dependency>
+            </dependencies>        
+        </plugin>
+
+  		<!-- PLUGIN War -->
+        <plugin>
+        	<groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-war-plugin</artifactId>
+            <version>${war.plugin.version}</version>
+            <configuration>
+              	<webXml>${basedir}/src/main/webapp/WEB-INF/web.xml</webXml>
+				<attachClasses>true</attachClasses>
+                <classesClassifier>classes</classesClassifier>
+			</configuration>
+            <executions>
+            	<execution>
+                	<goals>
+                    	<goal>war</goal>
+                    </goals>
+              		<configuration>
+                    	<webResources>
+        					<!-- Apply filtering to files matching the following expressions in src/main/webapp/WEB-INF. -->
+							<resource> 
+								<directory>${basedir}/src/main/webapp</directory> 
+								<includes> 
+									<include>**/*.jsp</include> 
+								</includes> 
+								<filtering>true</filtering> 
+							</resource>                         	
+							<resource>
+                            	<directory>${basedir}/src/main/webapp/WEB-INF</directory>
+                                <filtering>true</filtering>
+                                <targetPath>WEB-INF</targetPath>
+                                <includes>
+                                	<include>jetty-env.xml</include>
+                                	<include>spring-context.xml</include>
+                                </includes>
+                            </resource>
+       						 <!-- Continue considering resources the files in src/main/webapp/WEB-INF, but without applying filtering. -->
+                        	<resource>
+                            	<directory>${basedir}/src/main/webapp/WEB-INF</directory>
+                                <targetPath>WEB-INF</targetPath>
+                        	</resource>
+                        </webResources>
+                    </configuration>
+                </execution>
+            </executions>
+        </plugin>
+	</plugins>
+  </build>
+  <dependencies>
+    <dependency>
+    	<groupId>${project.groupId}</groupId>
+    	<artifactId>modelo</artifactId>
+    	<version>${project.version}</version>
+    </dependency>
+
+	<!-- Spring -->
+    <dependency>
+	  <groupId>org.springframework</groupId>
+	  <artifactId>spring-web</artifactId>
+	</dependency>
+	<dependency>
+		<groupId>org.springframework</groupId>
+		<artifactId>spring-webmvc</artifactId>
+	</dependency>
+	<!-- Apache Tiles -->
+	<dependency>
+		<groupId>org.apache.tiles</groupId>
+		<artifactId>tiles-jsp</artifactId>
+	</dependency>
+	<!-- Jackson -->
+	<dependency>
+		<groupId>org.codehaus.jackson</groupId>
+		<artifactId>jackson-mapper-asl</artifactId>
+	</dependency>
+	<!-- Logging -->
+	<dependency>
+		<groupId>org.slf4j</groupId>
+		<artifactId>slf4j-api</artifactId>
+	</dependency>
+	<dependency>
+		<groupId>org.slf4j</groupId>
+		<artifactId>jcl-over-slf4j</artifactId>
+	</dependency>
+	<dependency>
+		<groupId>ch.qos.logback</groupId>
+		<artifactId>logback-classic</artifactId>
+	</dependency>
+  </dependencies>
+</project>

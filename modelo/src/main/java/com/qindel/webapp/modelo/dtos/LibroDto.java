@@ -1,0 +1,152 @@
+package com.qindel.webapp.modelo.dtos;
+
+import java.io.Serializable;
+
+import org.apache.commons.lang.builder.EqualsBuilder;
+import org.apache.commons.lang.builder.HashCodeBuilder;
+
+/**
+ * Clase entity asociada a la tabla aplicacion_web.libro. Guarda toda la información relativa a un libro.
+ * 
+ * @author richie
+ * 
+ */
+public class LibroDto implements Serializable {
+
+	/** The Constant serialVersionUID. */
+	private static final long serialVersionUID = 2L;
+
+	/** Identificador del libro. */
+	private int idLibro;
+
+	/** Título del libro. */
+	private String titulo;
+
+	/** Autor del libro. */
+	private String autor;
+
+	/**
+	 * Constructor por defecto.
+	 */
+	public LibroDto() {
+		super();
+	}
+
+	/**
+	 * Constructor que incializa todos los campos.
+	 * 
+	 * @param idLibro
+	 *            Identifcador del libro
+	 * @param titulo
+	 *            Título del libro
+	 * @param autor
+	 *            Autor del libro
+	 */
+	public LibroDto(int idLibro, String titulo, String autor) {
+		super();
+		this.idLibro = idLibro;
+		this.titulo = titulo;
+		this.autor = autor;
+	}
+
+	/**
+	 * Gets the id libro.
+	 * 
+	 * @return the idLibro
+	 */
+	public int getIdLibro() {
+		return idLibro;
+	}
+
+	/**
+	 * Sets the id libro.
+	 * 
+	 * @param idLibro
+	 *            the idLibro to set
+	 */
+	public void setIdLibro(int idLibro) {
+		this.idLibro = idLibro;
+	}
+
+	/**
+	 * Gets the titulo.
+	 * 
+	 * @return the titulo
+	 */
+	public String getTitulo() {
+		return titulo;
+	}
+
+	/**
+	 * Sets the título.
+	 * 
+	 * @param titulo
+	 *            the new título
+	 */
+	public void setTítulo(String titulo) {
+		this.titulo = titulo;
+	}
+
+	/**
+	 * Gets the autor.
+	 * 
+	 * @return the autor
+	 */
+	public String getAutor() {
+		return autor;
+	}
+
+	/**
+	 * Sets the autor.
+	 * 
+	 * @param autor
+	 *            the autor to set
+	 */
+	public void setAutor(String autor) {
+		this.autor = autor;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see java.lang.Object#hashCode()
+	 */
+	@Override
+	public int hashCode() {
+		return new HashCodeBuilder().append(this.titulo).append(this.autor).toHashCode();
+	}
+
+	/**
+	 * Dos libros son iguales si tienen el mismo título y el mismo autor.
+	 * 
+	 * @param obj
+	 *            the obj
+	 * @return true, if successful
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		LibroDto other = (LibroDto) obj;
+		return new EqualsBuilder().append(this.titulo, other.titulo).append(this.autor, other.autor).isEquals();
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("LibroDto [idLibro=").append(idLibro).append(", titulo=").append(titulo).append(", autor=")
+				.append(autor).append("]");
+		return builder.toString();
+	}
+
+}

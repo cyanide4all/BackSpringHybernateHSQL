@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.qindel.webapp.modelo.entities.Libro" table="APLICACION_WEB.libro">
+        <id name="idLibro" type="java.lang.Integer">
+            <column name="id_libro" />
+            <generator class="identity" />
+        </id>
+        <property name="titulo" type="java.lang.String">
+            <column name="titulo" />
+        </property>
+        <property name="autor" type="java.lang.String">
+            <column name="autor" />
+        </property>
+    </class>
+</hibernate-mapping>
