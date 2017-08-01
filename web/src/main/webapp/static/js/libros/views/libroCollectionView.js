@@ -43,6 +43,8 @@ var LibroCollectionView = Backbone.View.extend({
 		this.eliminarLibroTemplate = options.eliminarLibroTemplate;
 		this.libroCollection = options.collection;
 		this.listenTo(this.libroCollection, 'reset', this.render);
+		this.listenTo(this.collection, 'destroy', this.renderCollection);
+		this.listenTo(this.collection, 'change', this.renderCollection);
 	},
 
 	/**

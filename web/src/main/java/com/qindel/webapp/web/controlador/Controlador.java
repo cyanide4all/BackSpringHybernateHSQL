@@ -1,19 +1,23 @@
 package com.qindel.webapp.web.controlador;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
-
 import com.qindel.webapp.modelo.dtos.LibroDto;
 import com.qindel.webapp.modelo.dtos.PaisDto;
+import com.qindel.webapp.modelo.entities.Libro;
 import com.qindel.webapp.modelo.servicio.Servicio;
+
 
 /**
  * Esta clase toma el rol de controlador en Spring MVC e implementa todos los métodos que serán llamados desde la
@@ -73,12 +77,31 @@ public class Controlador {
 	 * Método que borra un libro de la base de datos.
 	 * @param id es la id del libro.
 	 */
-	@RequestMapping(value = "/libros/{id}", method = RequestMethod.DELETE)
-	public void deleteLibro(@PathVariable("id") int id) {
+	@RequestMapping(value = "/libros/{id}", method = RequestMethod.DELETE, produces = "application/json")
+	public @ResponseBody void deleteLibro(@PathVariable("id") int id) {
 		LOGGER.debug("/libros/"+id);
 		servicio.deleteLibro(id);
 	}
 	
+	/**
+	 * Método que modifica un libro, pudiendo cambiar su título y autor
+	 * @param id es la id del libro a modificar
+	 * @param libro es un objeto de la clase Libro con los datos ya modificados
+	 */
+	@RequestMapping(value = "/libros/{id}", method = RequestMethod.PUT, produces = "application/json")
+	public @ResponseBody void modifyLibro(@PathVariable("id") int id, @RequestBody Libro libro) {
+		LOGGER.debug("/libros/"+id);
+		servicio.modifyLibro(id, libro);
+		//servicio.modifyLibro(id, );
+	}
+	
+	
+    @RequestMapping(value="/olimpiadas", method=RequestMethod.GET)
+    public ArrayList<HashMap<String, String>> getOlimpiadas(){
+    	ArrayList<HashMap<String, String>> listaCiudadesCompleto = servicio.getCiudadesCompleto();
+    	return listaCiudadesCompleto;
+    }
+    
 	/**
 	 * @return the servicio
 	 */

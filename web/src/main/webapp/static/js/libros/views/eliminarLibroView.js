@@ -16,7 +16,7 @@ var EliminarLibroView = Backbone.View.extend({
 	libro : null,
 
 	events : {
-		"click .borrar"	: "deleteLibro",
+		"click #botonBorrar"	: "deleteLibro",
 		"hidden.bs.modal #eliminarLibro" : "destroy"
 	},
 
@@ -54,8 +54,7 @@ var EliminarLibroView = Backbone.View.extend({
 	},
 	
 	deleteLibro: function(){
-		this.libro.destroy();
-		//this.destroy();
 		$(this.modal).modal('toggle');
+		this.libro.destroy()
 	}
 });

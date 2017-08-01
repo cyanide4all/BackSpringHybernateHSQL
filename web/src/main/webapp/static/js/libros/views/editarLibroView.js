@@ -16,6 +16,7 @@ var EditarLibroView = Backbone.View.extend({
 	libro : null,
 
 	events : {
+		"click #botonModificar" : "modificarModelo",
 		"hidden.bs.modal #editarLibro" : "destroy"
 	},
 
@@ -50,5 +51,13 @@ var EditarLibroView = Backbone.View.extend({
 		this.undelegateEvents();
 		this.$el.removeData();
 		$(this.modal).remove();
+	},
+	
+	modificarModelo : function() {
+		this.libro.set({"titulo": $('#tituloInput').val(), "autor" : $('#autorInput').val()})
+		//this.libro.titulo = $('#tituloInput').val();
+		//this.libro.autor = $('#autorInput').val();
+		this.libro.save();
+		$(this.modal).modal('toggle');
 	}
 });

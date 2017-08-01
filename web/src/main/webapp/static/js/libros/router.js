@@ -8,7 +8,8 @@ var AppRouter = Backbone.Router.extend({
 	routes : {
 		"" : "index",
 		"libros" : "libros",
-		"referencias" : "referencias"
+		"referencias" : "referencias",
+		"olimpiadas" : "olimpiadas"
 	},
 	/**
 	 * Vista encargada de mostrar la lista de países
@@ -26,16 +27,16 @@ var AppRouter = Backbone.Router.extend({
 	currentView : null,
 
 	initialize : function() {
-		var indexTemplate = this.loadTemplate('indexTemplate');
+		var indexTemplate = this.loadTemplate('libros', 'indexTemplate');
 		this.indexView = new IndexView({
 			template : indexTemplate
 		});
 
 		var libroCollection = new LibroCollection();
-		var libroCollectionTemplate = _.template(this.loadTemplate('libroCollection'));
-		var libroModelTemplate = _.template(this.loadTemplate('libroModel'));
-		var editarLibroTemplate = _.template(this.loadTemplate('editarLibro'));
-		var eliminarLibroTemplate = _.template(this.loadTemplate('eliminarLibro'));
+		var libroCollectionTemplate = _.template(this.loadTemplate('libros', 'libroCollection'));
+		var libroModelTemplate = _.template(this.loadTemplate('libros', 'libroModel'));
+		var editarLibroTemplate = _.template(this.loadTemplate('libros', 'editarLibro'));
+		var eliminarLibroTemplate = _.template(this.loadTemplate('libros', 'eliminarLibro'));
 		this.libroCollectionView = new LibroCollectionView({
 			collection : libroCollection,
 			template : libroCollectionTemplate,
@@ -86,8 +87,8 @@ var AppRouter = Backbone.Router.extend({
 	 * Carga una plantilla html indicándole el nombre del archivo sin extensión. La función buscará la plantilla en el
 	 * directorio web/static/js/libros/templates y utilizará como extensión del archivo ".tmpl"
 	 */
-	loadTemplate : function(name) {
-		var baseUrl = CONTEXT_PATH + '/static/js/libros/templates';
+	loadTemplate : function(entity, name) {
+		var baseUrl = CONTEXT_PATH + '/static/js/'+entity+'/templates';
 		var url = baseUrl + '/' + name + '.tmpl';
 
 		var template = '';

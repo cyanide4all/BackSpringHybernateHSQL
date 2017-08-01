@@ -2,7 +2,6 @@ package com.qindel.webapp.modelo.entities;
 
 import java.util.List;
 
-import org.hibernate.Session;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
 public class LibroDaoHibernate extends HibernateDaoSupport implements LibroDao {
@@ -18,13 +17,19 @@ public class LibroDaoHibernate extends HibernateDaoSupport implements LibroDao {
 		return getSessionFactory().getCurrentSession().createQuery("from Libro").list();
 	}
 
-	@Override
 	public void delete(int id) {
-		Session sesion = getSessionFactory().openSession();
-		Libro libro = (Libro) sesion.load(Libro.class, id);
+		Libro libro = this.findLibro(id);
 		if (libro != null) {
-	    	sesion.delete(libro);
+			getSessionFactory().getCurrentSession().delete(libro);
 	    }
+	}
+
+	@Override
+	public void modifyLibro(int id, Libro libro) {
+		Libro toUpdate = this.findLibro(id);
+		toUpdate.setAutor(libro.getAutor());
+		toUpdate.setTitulo(libro.getTitulo());
+		getSessionFactory().getCurrentSession().saveOrUpdate(toUpdate);
 	}
 	
 }

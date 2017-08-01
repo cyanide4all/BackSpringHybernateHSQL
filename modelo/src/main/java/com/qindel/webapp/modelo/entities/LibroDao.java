@@ -31,4 +31,11 @@ public interface LibroDao {
 	 * @param id la id del libro
 	 */
 	public void delete(int id);
+
+	/**
+	 * Modifica un libro en la base de datos
+	 * @param id es la id del libro
+	 * @param libro es un objeto de tipo libro con el resto de datos necesarios
+	 */
+	public void modifyLibro(int id, Libro libro);
 }

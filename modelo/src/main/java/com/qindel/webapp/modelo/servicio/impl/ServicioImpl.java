@@ -3,6 +3,7 @@ package com.qindel.webapp.modelo.servicio.impl;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -67,11 +68,17 @@ public class ServicioImpl implements Servicio {
 	}
 	
 	@Override
+	@Transactional
 	public void deleteLibro(int id) {
-		//TODO HEUHEUEHUEHUEHUEHEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEUHUEHEUHEUEHEUEHUEHUEHEUHEUHEUEH
 		libroDao.delete(id);
 	}
 
+	@Override
+	@Transactional
+	public void modifyLibro(int id, Libro libro) {
+		libroDao.modifyLibro(id, libro);
+	}
+	
 	/**
 	 * @return the paisDao
 	 */
@@ -100,6 +107,12 @@ public class ServicioImpl implements Servicio {
 	 */
 	public void setLibroDao(LibroDao libroDao) {
 		this.libroDao = libroDao;
+	}
+
+	@Override
+	public ArrayList<HashMap<String, String>> getCiudadesCompleto() {
+		ArrayList<HashMap<String, String>> toRet = this.paisDao.getCiudadesCompleto();
+		return toRet;
 	}
 
 }

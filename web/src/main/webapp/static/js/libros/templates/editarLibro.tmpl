@@ -8,12 +8,16 @@
 			</div>
 			<div class="modal-body">
 				<p>
-					La acción de editar el libro <%=titulo%>-<%=autor%> no está implementada.
+					Usa el siguiente formulario para modificar los valores necesarios:<br><br>
+					<label for="tituloInput">Titulo:</label>
+					<input id="tituloInput" class="form-control" type=text value="<%=titulo%>"><br>
+					<label for="autorInput">Autor:</label>					
+					<input id="autorInput" class="form-control" type=text  value="<%=autor%>">
 				</p>
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-				<button type="button" class="btn btn-primary">Aceptar</button>
+				<button id="botonModificar" type="button" class="btn btn-primary">Aceptar</button>
 			</div>
 		</div>
 	</div>
