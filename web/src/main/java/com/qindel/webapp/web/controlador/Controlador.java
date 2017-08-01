@@ -1,7 +1,5 @@
 package com.qindel.webapp.web.controlador;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -17,7 +15,6 @@ import com.qindel.webapp.modelo.dtos.LibroDto;
 import com.qindel.webapp.modelo.dtos.PaisDto;
 import com.qindel.webapp.modelo.entities.Libro;
 import com.qindel.webapp.modelo.servicio.Servicio;
-
 
 /**
  * Esta clase toma el rol de controlador en Spring MVC e implementa todos los métodos que serán llamados desde la
@@ -96,12 +93,7 @@ public class Controlador {
 	}
 	
 	
-    @RequestMapping(value="/olimpiadas", method=RequestMethod.GET)
-    public ArrayList<HashMap<String, String>> getOlimpiadas(){
-    	ArrayList<HashMap<String, String>> listaCiudadesCompleto = servicio.getCiudadesCompleto();
-    	return listaCiudadesCompleto;
-    }
-    
+	
 	/**
 	 * @return the servicio
 	 */

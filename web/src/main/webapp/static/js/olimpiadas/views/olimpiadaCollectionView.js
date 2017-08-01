@@ -11,19 +11,19 @@ var OlimpiadaCollectionView = Backbone.View.extend({
 	 */
 	template : null,
 	/**
-	 * Plantilla html asociada a la vista de una olimpiada individual
+	 * Plantilla html asociada a la vista de un olimpiada individual
 	 */
 	olimpiadaModelTemplate : null,
 	/**
-	 * Información de las olimpiadas
+	 * Información de los olimpiadas
 	 */
 	olimpiadaCollection : null,
 
 	/**
-	 * Inicializador de la clase. Establece los atributos collection, template y olimpiadaModelTemplate
+	 * Inicializador de la clase. Establece los atributos collection, template, olimpiadaModelTemplate
 	 * 
 	 * @param options.
-	 *            Es un hash con los siguientes elementos { collection : value, template: value, olimpiadaModelTemplate: value }
+	 *            Es un hash con los siguientes elementos { collection : value, template: value, olimpiadaModelTemplate: value}
 	 */
 	initialize : function(options) {
 
@@ -34,12 +34,12 @@ var OlimpiadaCollectionView = Backbone.View.extend({
 	},
 
 	/**
-	 * Crea un nodo dom con la plantilla html (this.template) y los datos de las olimpiadas (this.collection).
+	 * Crea un nodo dom con la plantilla html (this.template) y los datos de los países (this.collection).
 	 * 
 	 * @return Devuelve la instancia sobre la que se ejecuta la función.
 	 */
 	render : function() {
-		this.recuperarOlimpiadas(this.renderCollection, this.error);
+		this.recuperarolimpiadas(this.renderCollection, this.error);
 	},
 
 	renderCollection : function() {
@@ -47,17 +47,18 @@ var OlimpiadaCollectionView = Backbone.View.extend({
 		_.each(this.collection.models, function(value) {
 			$('#filas').append(new OlimpiadaModelView({
 				model : value,
-				template : this.olimpiadaModelTemplate,
+				template : this.olimpiadaModelTemplate
 			}).render().el);
 		}, this);
 
 		return this;
 	},
+	
 	error : function() {
 		alert('Se ha producido un error al recuperar la lista de olimpiadas.');
 	},
 
-	recuperarOlimpiadas : function(success, error) {
+	recuperarolimpiadas : function(success, error) {
 		this.olimpiadaCollection.fetch({
 			success : _.bind(success, this),
 			error : _.bind(error, this)

@@ -8,8 +8,8 @@ var AppRouter = Backbone.Router.extend({
 	routes : {
 		"" : "index",
 		"libros" : "libros",
-		"referencias" : "referencias",
-		"olimpiadas" : "olimpiadas"
+		"olimpiadas" : "olimpiadas",
+		"referencias" : "referencias"
 	},
 	/**
 	 * Vista encargada de mostrar la lista de países
@@ -45,9 +45,20 @@ var AppRouter = Backbone.Router.extend({
 			eliminarLibroTemplate : eliminarLibroTemplate
 		});
 
-		var referenciasTemplate = this.loadTemplate('referencias');
+		
+		
+		var referenciasTemplate = this.loadTemplate('libros', 'referencias');
 		this.referenciasView = new ReferenciasView({
 			template : referenciasTemplate
+		});
+		
+		var olimpiadaCollection = new OlimpiadaCollection();
+		var olimpiadaCollectionTemplate = _.template(this.loadTemplate('olimpiadas', 'olimpiadaCollection'));
+		var olimpiadaModelTemplate = _.template(this.loadTemplate('olimpiadas', 'olimpiadaModel'));
+		this.olimpiadaCollectionView = new OlimpiadaCollectionView({
+			collection : olimpiadaCollection,
+			template : olimpiadaCollectionTemplate,
+			olimpiadaModelTemplate : olimpiadaModelTemplate
 		});
 	},
 
@@ -70,6 +81,10 @@ var AppRouter = Backbone.Router.extend({
 	 */
 	libros : function() {
 		this.changeView(this.libroCollectionView);
+	},
+	
+	olimpiadas : function(){
+		this.changeView(this.olimpiadaCollectionView);
 	},
 
 	changeView : function(newView) {

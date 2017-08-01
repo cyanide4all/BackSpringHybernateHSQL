@@ -14,7 +14,7 @@ var NavBar = Backbone.View.extend({
     titles: {
         "index": "Inicio",
         "libros": "Libros",
-        "Olimpiadas" : "Olimpiadas",
+        "olimpiadas" : "Olimpiadas",
         "referencias": "Referencias"
     },
     events:{

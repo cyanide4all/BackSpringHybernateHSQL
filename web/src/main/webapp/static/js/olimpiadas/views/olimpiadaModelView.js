@@ -1,7 +1,7 @@
 /**
  * Renderiza una fila de la tabla de resultados, se corresponde con un modelo
  */
-var LibroModelView = Backbone.View.extend({
+var OlimpiadaModelView = Backbone.View.extend({
 	/**
 	 * Tag asociado a esta vista
 	 */
@@ -10,7 +10,7 @@ var LibroModelView = Backbone.View.extend({
 	 * Plantilla html asociada a la vista.
 	 */
 	template : null,
-	
+
 	/**
 	 * Lista de eventos dom manejados por esta vista
 	 */
@@ -18,17 +18,17 @@ var LibroModelView = Backbone.View.extend({
 	},
 
 	/**
-	 * Inicializador de la clase. Establece los atributos model y template
+	 * Inicializador de la clase. Establece los atributos model, template
 	 * 
 	 * @param options.
-	 *            Es un hash con los siguientes elementos { model : value, template: value}
+	 *            Es un hash con los siguientes elementos { model : value, template: value }
 	 */
 	initialize : function(options) {
 		this.template = options.template;
 	},
 
 	/**
-	 * Crea un nodo dom con la plantilla html y los datos de las olimpiadas (this.model).
+	 * Crea un nodo dom con la plantilla html y los datos del país (this.model).
 	 * 
 	 * @return Devuelve la instancia sobre la que se ejecuta la función.
 	 */

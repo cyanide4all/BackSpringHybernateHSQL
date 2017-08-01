@@ -1,7 +1,5 @@
 package com.qindel.webapp.modelo.servicio;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 import com.qindel.webapp.modelo.dtos.LibroDto;
@@ -40,14 +38,4 @@ public interface Servicio {
 	 * @param autor
 	 */
 	public void modifyLibro(int id, Libro libro);
-
-	/**
-	 * Este método devuelve un listado de todas las ciudades dadas de alta en el sistema indicando, 
-	 * para cada una de ellas, el número de veces que ha sido sede de unos juegos olímpicos; 
-	 * distinguiendo entre el número de veces que lo ha sido para juegos de invierno y de verano. 
-	 * Además, se mostrará también el dato "valor" que puede ser nulo para una ciudad concreta 
-	 * y en cuyo caso se mostraría el definido para el país. 
-	 * @return dichos datos, en forma de Lista de Mapas
-	 */
-	public ArrayList<HashMap<String, String>> getCiudadesCompleto();
 }

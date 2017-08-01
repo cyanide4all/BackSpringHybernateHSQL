@@ -53,6 +53,7 @@ var LibroCollectionView = Backbone.View.extend({
 	 * @return Devuelve la instancia sobre la que se ejecuta la función.
 	 */
 	render : function() {
+		console.log("Renderizando libros")
 		this.recuperarLibros(this.renderCollection, this.error);
 	},
 

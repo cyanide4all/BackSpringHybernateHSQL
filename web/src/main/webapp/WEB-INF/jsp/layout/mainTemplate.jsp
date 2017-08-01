@@ -89,6 +89,11 @@
 <script src="${contextPath}/static/js/libros/views/libroCollectionView.js"></script>
 <script src="${contextPath}/static/js/libros/views/eliminarLibroView.js"></script>
 <script src="${contextPath}/static/js/libros/views/editarLibroView.js"></script>
+
+<script src="${contextPath}/static/js/olimpiadas/models/olimpiadaModel.js"></script>
+<script src="${contextPath}/static/js/olimpiadas/collections/olimpiadaCollection.js"></script>
+<script src="${contextPath}/static/js/olimpiadas/views/olimpiadaCollectionView.js"></script>
+<script src="${contextPath}/static/js/olimpiadas/views/olimpiadaModelView.js"></script>
 <script src="${contextPath}/static/js/common/views/navBarView.js"></script>
 <script src="${contextPath}/static/js/libros/router.js"></script>
 
