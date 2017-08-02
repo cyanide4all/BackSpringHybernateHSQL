@@ -8,17 +8,16 @@ var OlimpiadaModel = Backbone.Model.extend({
 	 */
 	urlRoot: CONTEXT_PATH + '/rest/paises',
 	/**
-	 * Indicamos a Backbone que utilice la propiedad idolimpiada como identificador del olimpiada
-	 */
-	idAttribute: 'id_pais',
-	/**
 	 * Lista de atributos mínimos que tendrán todas las instancias de olimpiadaModel.
 	 */
 	defaults: {
-		id_pais: null,
-		nombre_pais : '',
-		codigo_pais : '',
-		valor_pais : null
+    	id_ciudad : 999,
+    	nombre_ciudad : 'N/A',
+		id_pais: 999,
+		nombre_pais : 'N/A',
+		valor: 999,
+		tipo_jjoo : 'N/A',
+		veces_sede : 999
 	}
 
 });

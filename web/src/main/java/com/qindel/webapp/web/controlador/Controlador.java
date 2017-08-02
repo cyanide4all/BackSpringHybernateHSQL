@@ -92,8 +92,6 @@ public class Controlador {
 		//servicio.modifyLibro(id, );
 	}
 	
-	
-	
 	/**
 	 * @return the servicio
 	 */
