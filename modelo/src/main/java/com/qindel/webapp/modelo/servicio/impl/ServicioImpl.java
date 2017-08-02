@@ -14,6 +14,7 @@ import com.qindel.webapp.modelo.dtos.LibroDto;
 import com.qindel.webapp.modelo.dtos.PaisDto;
 import com.qindel.webapp.modelo.entities.Libro;
 import com.qindel.webapp.modelo.entities.LibroDao;
+import com.qindel.webapp.modelo.entities.Olimpiada;
 import com.qindel.webapp.modelo.entities.Pais;
 import com.qindel.webapp.modelo.entities.PaisDao;
 import com.qindel.webapp.modelo.servicio.Servicio;
@@ -106,6 +107,12 @@ public class ServicioImpl implements Servicio {
 	 */
 	public void setLibroDao(LibroDao libroDao) {
 		this.libroDao = libroDao;
+	}
+
+	@Override
+	@Transactional
+	public List<Olimpiada> listCiudadesCompleto() {
+		return this.paisDao.getCiudadesCompleto();
 	}
 
 }

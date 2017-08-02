@@ -14,6 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.qindel.webapp.modelo.dtos.LibroDto;
 import com.qindel.webapp.modelo.dtos.PaisDto;
 import com.qindel.webapp.modelo.entities.Libro;
+import com.qindel.webapp.modelo.entities.Olimpiada;
 import com.qindel.webapp.modelo.servicio.Servicio;
 
 /**
@@ -90,6 +91,21 @@ public class Controlador {
 		LOGGER.debug("/libros/"+id);
 		servicio.modifyLibro(id, libro);
 		//servicio.modifyLibro(id, );
+	}
+
+	/**
+	 * Este método devuelve todas las ciudades dadas de alta en el sistema indicando, 
+	 * para cada una de ellas, el número de veces que ha sido sede de unos juegos olímpicos; 
+	 * distinguiendo entre el número de veces que lo ha sido para juegos de invierno y de verano. 
+	 * Además, se mostrará también el dato "valor" que puede ser nulo para una ciudad concreta y 
+	 * en cuyo caso se mostraría el definido para el país. 
+	 * @return La lista con los datos anteriormente indicados
+	 */
+	@RequestMapping(value = "/olimpiadas", method = RequestMethod.GET, produces = "application/json")
+	public @ResponseBody List<Olimpiada> listCiudadesCompleto() {
+		LOGGER.debug("/olimpiadas");
+		List<Olimpiada> listaPaises = servicio.listCiudadesCompleto();
+		return listaPaises;
 	}
 	
 	/**

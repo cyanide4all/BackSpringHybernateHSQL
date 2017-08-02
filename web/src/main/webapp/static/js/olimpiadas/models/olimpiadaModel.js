@@ -6,7 +6,7 @@ var OlimpiadaModel = Backbone.Model.extend({
 	 * definiendo urlRoot no será necesario asociar a un modelo a ninguna colección para poder sincronizarlo 
 	 * con el servidor.
 	 */
-	urlRoot: CONTEXT_PATH + '/rest/paises',
+	urlRoot: CONTEXT_PATH + '/rest/olimpiadas',
 	/**
 	 * Lista de atributos mínimos que tendrán todas las instancias de olimpiadaModel.
 	 */
