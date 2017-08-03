@@ -18,21 +18,4 @@
         </property>
     </class>
     
-    <class name="com.qindel.webapp.modelo.entities.Ciudad" table="APLICACION_WEB.ciudad">
-        <id name="id_ciudad" type="java.lang.Integer">
-            <column name="id_ciudad" />
-            <generator class="assigned" />
-        </id>
-        <property name="nombre_ciudad" type="java.lang.String">
-            <column name="nombre_ciudad" />
-        </property>
-        <property name="valor" type="java.lang.Integer">
-            <column name="valor_ciudad" />
-        </property>
-        <many-to-one name="pais" 
-        class="com.qindel.webapp.modelo.entities.Pais" 
-        column="id_pais"
-        not-null="true"/>
-    </class>
-    
 </hibernate-mapping>

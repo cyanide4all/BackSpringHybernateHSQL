@@ -12,10 +12,10 @@ public class Olimpiada implements Serializable {
 	private String nombre_pais;
 	private int valor;
 	private String tipo_jjoo;
-	private int veces_sede;
+	private long veces_sede;
 	
 	public Olimpiada(int id_ciudad, String nombre_ciudad, int id_pais, String nombre_pais, int valor, String tipo_jjoo,
-			int veces_sede) {
+			long veces_sede) {
 		this.id_ciudad = id_ciudad;
 		this.nombre_ciudad = nombre_ciudad;
 		this.id_pais = id_pais;
@@ -71,13 +71,12 @@ public class Olimpiada implements Serializable {
 	public void setTipo_jjoo(String tipo_jjoo) {
 		this.tipo_jjoo = tipo_jjoo;
 	}
-	public int getVeces_sede() {
+	public long getVeces_sede() {
 		return veces_sede;
 	}
-	public void setVeces_sede(int veces_sede) {
+	public void setVeces_sede(long veces_sede) {
 		this.veces_sede = veces_sede;
 	}
-	
 	
 	
 	

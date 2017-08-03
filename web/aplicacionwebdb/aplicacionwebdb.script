@@ -54,7 +54,7 @@ SET SCHEMA SYSTEM_LOBS
 INSERT INTO BLOCKS VALUES(0,2147483647,0)
 SET SCHEMA APLICACION_WEB
 INSERT INTO LIBRO VALUES(1,'Romeo y Julieta','William Shakespeare')
-INSERT INTO LIBRO VALUES(2,'Fausto','Johann Wolfgang Goethe')
+INSERT INTO LIBRO VALUES(2,'Faustos','Johann Wolfgang Goethe')
 INSERT INTO LIBRO VALUES(4,'Madame Bovari','Gustave Flauberto')
 INSERT INTO LIBRO VALUES(5,'Oliver Twists','Charles Dickens')
 INSERT INTO LIBRO VALUES(6,'Tom Sawyer','Marquitos Twister')

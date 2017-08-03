@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.qindel.webapp.modelo.entities.Sede_jjoo" table="APLICACION_WEB.sede_jjoo">
+        <id name="anyo" type="java.lang.Integer">
+            <column name="año" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="tipo_jjoo" 
+	    class="com.qindel.webapp.modelo.entities.Tipo_jjoo" 
+	    column="id_tipo_jjoo"
+	    not-null="true"/>
+        <many-to-one name="sede" 
+	    class="com.qindel.webapp.modelo.entities.Ciudad" 
+	    column="sede"
+	    not-null="true"/>
+    </class>
+</hibernate-mapping>
